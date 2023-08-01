@@ -1,0 +1,68 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="panel.css">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="bootstrap.bundle.min.js"></script>
+  <script src="panel.js"></script>
+</head>
+<body style="min-height:160px;width:600px;height:700px;margin-top:5px;margin-bottom:10px;font-size:12px;">
+  <!--button id="btn" type="button">Click</button-->
+  <div id="__result">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="clan-tab" data-bs-toggle="tab" data-bs-target="#clan" type="button" role="tab" aria-controls="clan" aria-selected="true">Гильдия</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="war-tab" data-bs-toggle="tab" data-bs-target="#war" type="button" role="tab" aria-controls="war" aria-selected="false">ВГ</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="cross-tab" data-bs-toggle="tab" data-bs-target="#cross" type="button" role="tab" aria-controls="cross" aria-selected="false">СМ</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="raid-tab" data-bs-toggle="tab" data-bs-target="#raid" type="button" role="tab" aria-controls="raid" aria-selected="false">Асгард</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="clan" role="tabpanel" aria-labelledby="clan-tab"></div>
+      <div class="tab-pane fade" id="war" role="tabpanel" aria-labelledby="war-tab"></div>
+      <div class="tab-pane fade" id="cross" role="tabpanel" aria-labelledby="cross-tab">
+        <ul class="nav nav-tabs" id="myTabCross" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="cross-att-tab" data-bs-toggle="tab" data-bs-target="#cross_att" type="button" role="tab" aria-controls="cross_att" aria-selected="true">Cross Attack</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="cross-def-tab" data-bs-toggle="tab" data-bs-target="#cross_def" type="button" role="tab" aria-controls="cross_def" aria-selected="false">Cross Def</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabCrossContent">
+          <div class="tab-pane fade show active" id="cross_att" role="tabpanel" aria-labelledby="cross-att-tab"></div>
+          <div class="tab-pane fade" id="cross_def" role="tabpanel" aria-labelledby="cross-def-tab"></div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="raid" role="tabpanel" aria-labelledby="raid-tab" style="position: relative;">
+        <ul class="nav nav-tabs" id="myTabRaid" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="raid-att-tab" data-bs-toggle="tab" data-bs-target="#raid_attacks" type="button" role="tab" aria-controls="raid_att" aria-selected="true">Аттаки</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="raid-attackers-tab" data-bs-toggle="tab" data-bs-target="#raid_attackers" type="button" role="tab" aria-controls="raid_atackers" aria-selected="false">Атакующие</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="raid-boss-tab" data-bs-toggle="tab" data-bs-target="#raid_boss" type="button" role="tab" aria-controls="raid_boss" aria-selected="false">Боссы</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabRaidContent">
+          <div class="tab-pane fade show active" id="raid_attacks" role="tabpanel" aria-labelledby="raid-att-tab"></div>
+          <div class="tab-pane fade" id="raid_attackers" role="tabpanel" aria-labelledby="raid_attackers-tab"></div>
+          <div class="tab-pane fade" id="raid_boss" role="tabpanel" aria-labelledby="raid-boss-tab"></div>
+        </div>
+      </div>
+      <div class="tooltip" role="tooltip" style="position: absolute; margin: 0px; background-color: #23140A; border-radius: 10px;padding: 5px;">
+        <canvas id="tip" width="627" height="119" style="border:1px solid #4B380C;height:75px;"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="ximg"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "description": "Помощник Юного Генерала",
+  "manifest_version": 3,
+  "name": "HWHelper",
+  "version": "2023.08.01",
+  "action": {
+    "default_title": "Помощник Юного Генерала",
+    "default_popup": "panel.html"
+   },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "128": "ico.png",
+    "48": "ico.png"
+  },
+  "content_scripts": [ {
+    "all_frames": true,
+    "js": [ "contentscript.js" ],
+    "matches": [ "https://www.hero-wars.com/*", "https://hero-wars.com/*" ],
+    "run_at": "document_start"
+  } ],
+  "permissions": [ "activeTab", "storage", "unlimitedStorage", "notifications", "contextMenus" ],
+  "web_accessible_resources": [{
+    "all_frames": true,
+    "resources": [ "injected.js", "panel.html", "panel.js" ],
+    "matches": [ "https://www.hero-wars.com/*", "https://hero-wars.com/*", "https://heroes-wb.nextersglobal.com/*" ],
+    "run_at": "document_start"
+  }]
+}
