@@ -2,7 +2,7 @@
   "description": "Помощник Юного Генерала",
   "manifest_version": 3,
   "name": "HWHelper",
-  "version": "2023.08.01",
+  "version": "2023.08.08",
   "action": {
     "default_title": "Помощник Юного Генерала",
     "default_popup": "panel.html"

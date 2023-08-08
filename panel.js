@@ -317,10 +317,14 @@ function s(a, b, arr)
 }
 
 function logKey(e) {
-  if (e.ctrlKey && e.keyCode == 89){
-    chrome.storage.local.get(['hw_clanGetInfo', 'hw_clanRaid_logBoss', 'hw_userGetInfo'], (a) => csv(a, e.shiftKey));
-  }
   console.info(e.keyCode);
+  // ctrl + y
+  if (e.ctrlKey && e.keyCode == 89){
+    //chrome.storage.local.get(['hw_clanGetInfo', 'hw_clanRaid_logBoss', 'hw_userGetInfo'], (a) => csv(a, e.shiftKey));
+    csvCurrent();
+  }
+  
+  // ctrl + m
   if (e.ctrlKey && e.keyCode == 77){
     chrome.storage.local.get(['hw_clanGetInfo', 'hw_clanRaid_logBoss', 'hw_userGetInfo'], (a) => json(a));
   }
@@ -611,6 +615,24 @@ function csv(res, shift){
   }, 0); 
 }
 
+function csvCurrent() {
+  let currContentSelector = document.querySelector('button.nav-link.active').dataset.bsTarget;
+  let currTabs = document.querySelector(currContentSelector).querySelector('ul');
+  
+  if (currTabs != null) {
+    currContentSelector = currTabs.querySelector('button.nav-link.active').dataset.bsTarget;
+    
+  }
+  let currContent = document.querySelector(currContentSelector);
+  let data = Array.from(currContent.querySelectorAll('div.row')).map(r => Array.from(r.querySelectorAll('div.cell')).map(c => {return c.innerText}))
+
+  //var blob = new Blob([data.map(row => row.join(`\t`)).join(`\n`)], { type: 'text/csv;charset=utf-8;' });
+  
+  navigator.clipboard.writeText(data.map(row => row.join(`\t`)).join(`\n`));
+  
+  animate();
+}
+
 function json(res){
   let bosses = raidInfo(res);
   let data = [];
@@ -619,16 +641,19 @@ function json(res){
     data.push({name: b.name, date: b.date.getTime(), boss: b.boss, damage: b.damage, attackers: b.data.attackers, pet: b.data.pet});
   });
   navigator.clipboard.writeText(JSON.stringify(data));
-  
+  animate();
+
+//square.addEventListener('animationcancel', (ev) => {
+//    console.log("Animation canceled" , ev); 
+//});
+}
+
+function animate() {
   let xel = document.querySelector(".ximg");
   xel.classList.add('elementToFadeInAndOut');
   xel.addEventListener('animationend', (ev) => {
    document.querySelector(".ximg").classList.remove('elementToFadeInAndOut');
-});
-
-square.addEventListener('animationcancel', (ev) => {
-    console.log("Animation canceled" , ev); 
-});
+  });
 }
 
 // Асгард
